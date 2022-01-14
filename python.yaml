@@ -1,0 +1,28 @@
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: application-py
+  labels:
+    app: app-py
+spec:
+  selector:
+    matchLabels:
+      app: app-py
+  template:
+    metadata:
+
+      labels:
+        app: app-py
+
+    spec:
+      containers:
+       - name: application-py
+         image: gcr.io/final-task-gcp/nourantaha/my-app:v2
+         ports:
+          - containerPort: 8000
+         env:
+         
+          - name: REDIS_HOST
+            value: "my-service"
+
